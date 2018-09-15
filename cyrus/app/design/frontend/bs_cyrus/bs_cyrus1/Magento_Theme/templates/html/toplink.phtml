@@ -1,0 +1,13 @@
+<ul class="top-link">
+	<?php if($this->helper('Rokanthemes\Themeoption\Helper\Data')->isLoggedIn()): ?>
+	<li><a href="<?php echo $this->helper('Rokanthemes\Themeoption\Helper\Data')->getBaseUrl('customer/account/logout');?>"><?php echo __('Logout');?></a></li>	
+	<li><a href="<?php echo $this->helper('Rokanthemes\Themeoption\Helper\Data')->getBaseUrl('customer/account/'); ?>"><?php echo __('My account') ?></a></li>
+	<?php else: ?>
+	<li class="sign-in">
+		<span class="pe-7s-user"></span>
+		<a href="<?php echo $this->helper('Rokanthemes\Themeoption\Helper\Data')->getBaseUrl('customer/account/login/'); ?>"><?php echo __('Sign In') ?></a>
+		<span><?php echo __('or') ?></span>
+		<a href="<?php echo $this->helper('Rokanthemes\Themeoption\Helper\Data')->getBaseUrl('customer/account/create/'); ?>"><?php echo __('Creat An Account') ?></a>
+	</li>
+	<?php endif ?>
+</ul>

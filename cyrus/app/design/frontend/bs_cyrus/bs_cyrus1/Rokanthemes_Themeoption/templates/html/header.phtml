@@ -1,0 +1,69 @@
+<div class="header-container">
+	<div class="header">
+		<div class="top-header">
+			<div class="container-full">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 text-left">
+						<?php if ( $this->getChildHtml("store_language") ): ?>
+							<?php echo $this->getChildHtml("store_language"); ?>
+						<?php endif; ?>
+						<?php if( $this->getChildHtml("currency") ): ?>
+							<?php echo $this->getChildHtml("currency"); ?>
+						<?php endif; ?>
+						<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact_header')->toHtml(); ?>
+					</div>
+
+					<div class="col-xs-12 col-sm-12 col-md-6 text-left">
+						<?php if ( $this->getChildHtml("top_link") ): ?>
+							<?php echo $this->getChildHtml("top_link"); ?>
+						<?php endif; ?>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="container-full">
+			<div class="row">
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-logo">
+					<?php echo $this->getChildHtml("logo"); ?>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 col-menu">
+					<span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>	
+					<?php echo $this->getChildHtml("top.navigation.sections"); ?>	
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 col-cart">
+					<?php echo $this->getChildHtml("minicart");?>
+					<?php echo $this->getChildHtml("top.search"); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    require(['jquery'],function($){
+        $(document).ready(function($){
+        	var num = $('.header-container').outerHeight();
+			var screenWidth = $(window).width();
+			function scrollHeader() {
+				if ($(window).scrollTop() > num && screenWidth >= 768 ){  
+					$(".header-container").addClass("sticky");
+				}
+				else{
+					$(".header-container").removeClass("sticky");
+				}
+			}
+			function stickHeader() {
+				$(window).scroll(function() {
+					scrollHeader();
+				});
+				scrollHeader();
+			}
+			stickHeader();
+			$(window).resize(function(){
+				screenWidth = $(window).width();
+				stickHeader();
+			});
+		});
+    });
+</script>
